@@ -144,11 +144,6 @@ public class Joueur {
 	 *méthode toString
 	 *@return informations du joueur
 	 */
-	@Override
-	public String toString() {
-		return "Joueur [idJoueur=" + idJoueur + ", lieuRech=" + lieuRech
-				+ ", nom=" + nom + ", prenom=" + prenom + ", pseudo=" + pseudo
-				+ ", password=" + password + "]";
-	}
+	
 }
 

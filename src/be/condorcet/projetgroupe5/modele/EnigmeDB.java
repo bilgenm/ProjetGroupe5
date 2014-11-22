@@ -6,7 +6,6 @@ package be.condorcet.projetgroupe5.modele;
  * @see Enigme
  */
 import java.sql.*;
-import java.util.*;
 import android.util.Log;
 
 public class EnigmeDB extends Enigme implements CRUD {
