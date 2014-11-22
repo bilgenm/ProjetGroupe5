@@ -8,7 +8,7 @@ package be.condorcet.projetgroupe5.modele;
 
 
 import java.sql.*;
-
+import android.util.Log;
 
 public class JeuDB extends Jeu implements CRUD {
 
@@ -67,7 +67,7 @@ public class JeuDB extends Jeu implements CRUD {
     /**
   	 * enregistrement d'un nouveau jeu dans la base de données
      * @throws Exception erreur de création
-    */   
+     */   
     public void create()throws Exception{
     	CallableStatement cstmt=null;
     	try{
@@ -94,7 +94,6 @@ public class JeuDB extends Jeu implements CRUD {
 	 * récupération des données d'un Jeu sur base de son identifiant
 	 * @throws Exception code inconnu
 	 */	
-	
 	public void read() throws Exception{
 		String req = "select * from JEU where id_ville =?"; 
 	    PreparedStatement  pstmt=null;
@@ -113,7 +112,7 @@ public class JeuDB extends Jeu implements CRUD {
 
         }
 		catch(Exception e){
-			//Log.d("connexion","erreur"+e);   
+			Log.d("connexion","erreur"+e);   
                 throw new Exception("Erreur de lecture "+e.getMessage());
             }
         finally{

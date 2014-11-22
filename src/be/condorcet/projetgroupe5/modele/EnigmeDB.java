@@ -128,9 +128,9 @@ public class EnigmeDB extends Enigme implements CRUD {
 	 * @return enigme du lieu recherché
 	 * @throws Exception lieu inconnu
 	 */
-	 public static EnigmeDB rechEnigmeLieu(int lieuRech)throws Exception{
-		    String req = "select * from ENIGME where lieu = ?";
-			PreparedStatement pstmt=null;
+	public static EnigmeDB rechEnigmeLieu(int lieuRech)throws Exception{
+		String req = "select * from ENIGME where lieu = ?";
+		PreparedStatement pstmt=null;
 		    try{
 				pstmt = dbConnect.prepareStatement(req);
 				pstmt.setInt(1,lieuRech);
