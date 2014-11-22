@@ -5,8 +5,9 @@ public class Lieu {
 	protected int successeur;
 	protected String nomLieu;
 	protected String descLieu;
-	protected double longLieu;
 	protected double latLieu;
+	protected double longLieu;
+	
 	
 	
 	
@@ -57,14 +58,6 @@ public class Lieu {
 		this.descLieu = descLieu;
 	}
 
-	public double getLongLieu() {
-		return longLieu;
-	}
-
-	public void setLongLieu(double longLieu) {
-		this.longLieu = longLieu;
-	}
-
 	public double getLatLieu() {
 		return latLieu;
 	}
@@ -73,10 +66,20 @@ public class Lieu {
 		this.latLieu = latLieu;
 	}
 
+	public double getLongLieu() {
+		return longLieu;
+	}
+
+	public void setLongLieu(double longLieu) {
+		this.longLieu = longLieu;
+	}
+
 	@Override
 	public String toString() {
 		return "Lieu [idLieu=" + idLieu + ", successeur=" + successeur
 				+ ", nomLieu=" + nomLieu + ", descLieu=" + descLieu
-				+ ", longLieu=" + longLieu + ", latLieu=" + latLieu + "]";
+				+ ", latLieu=" + latLieu + ", longLieu=" + longLieu + "]";
 	}
+
+	
 }
