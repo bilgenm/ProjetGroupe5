@@ -16,7 +16,7 @@ public class Lieu {
 	}
 
 	public Lieu(int idLieu, int successeur, String nomLieu, String descLieu,
-			double longLieu, double latLieu) {
+			double latLieu, double longLieu) {
 		super();
 		this.idLieu = idLieu;
 		this.successeur = successeur;

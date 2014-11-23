@@ -4,6 +4,7 @@ package be.condorcet.projetgroupe5.modele;
  * classe métier de gestion d'un joueur
  * @author Bilgen Mustafa
  * @version 1.0
+ * @see Lieu
  */
 public class Joueur {
 	/**
@@ -149,6 +150,6 @@ public class Joueur {
 		return "Joueur [idJoueur=" + idJoueur + ", lieuRech=" + lieuRech
 				+ ", nom=" + nom + ", prenom=" + prenom + ", pseudo=" + pseudo
 				+ ", password=" + password + "]";
-	}	
+	}
 }
 
