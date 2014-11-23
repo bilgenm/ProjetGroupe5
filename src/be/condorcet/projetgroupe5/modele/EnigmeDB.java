@@ -6,6 +6,7 @@ package be.condorcet.projetgroupe5.modele;
  * @see Enigme
  */
 import java.sql.*;
+
 import android.util.Log;
 
 public class EnigmeDB extends Enigme implements CRUD {
@@ -103,15 +104,15 @@ public class EnigmeDB extends Enigme implements CRUD {
           	ResultSet rs=(ResultSet)pstmt.executeQuery();	
           	if(rs.next()){
           		this.lieuEnig=rs.getInt("LIEU");
-          		this.langue=rs.getString("LANGUE");
-          		this.texte=rs.getString("TEXTE");
+          		this.langue=rs.getString("LANGUE_ENIG");
+          		this.texte=rs.getString("TEXTE_ENIG");
           	}
           	else { 
           		throw new Exception("Code inconnu");
           	}
         }
         catch(Exception e){
-        	Log.d("connexion","erreur"+e);   
+        	//Log.d("connexion","erreur"+e);   
             throw new Exception("Erreur de lecture "+e.getMessage());
         }
         finally{ 
@@ -128,17 +129,17 @@ public class EnigmeDB extends Enigme implements CRUD {
 	 * @return enigme du lieu recherché
 	 * @throws Exception lieu inconnu
 	 */
-	public static EnigmeDB rechEnigmeLieu(int lieuRech)throws Exception{
-		String req = "select * from ENIGME where lieu = ?";
-		PreparedStatement pstmt=null;
+	 public static EnigmeDB rechEnigmeLieu(int lieuRech)throws Exception{
+		    String req = "select * from ENIGME where lieu = ?";
+			PreparedStatement pstmt=null;
 		    try{
 				pstmt = dbConnect.prepareStatement(req);
 				pstmt.setInt(1,lieuRech);
 				ResultSet rs=(ResultSet)pstmt.executeQuery();
 				if(rs.next()){
 	                int idEnig=rs.getInt("ID_ENIGME");
-					String lang=rs.getString("LANGUE");
-					String tex=rs.getString("TEXTE");
+					String lang=rs.getString("LANGUE_ENIG");
+					String tex=rs.getString("TEXTE_ENIG");
 					return new EnigmeDB(idEnig,lieuRech,lang,tex);
 				}
 				else throw new Exception("lieu inconnu");
@@ -193,7 +194,15 @@ public class EnigmeDB extends Enigme implements CRUD {
 				cstmt = dbConnect.prepareCall(req);
 				cstmt.setInt(1,idEnigme);
 				cstmt.executeUpdate();
-	 	    }	
+	 	    }
+			
+
+          	catch (SQLException sqle){
+    			if(sqle.getErrorCode()==20004){
+    				throw new Exception("Cet enigme n'existe pas!"); 
+    			}
+          	
+        }
 			catch (Exception e){
 	 	     	throw new Exception("Erreur d'effacement "+e.getMessage());
 	        }
