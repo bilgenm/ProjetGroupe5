@@ -2,6 +2,10 @@ package be.condorcet.projetgroupe5.modele;
 
 import java.sql.Connection;
 
+import modele.DBConnection;
+import modele.EnigmeDB;
+import modele.LieuDB;
+
 
 public class TestEnigmeDB {
 
@@ -106,6 +110,48 @@ public class TestEnigmeDB {
  			System.out.println("OK exception normale d'effacement" + e);
  		}
          
+         try{
+         	System.out.println("---------------------------------------------------");
+             System.out.println("test recherche fructueuse d'un enigme pour un lieu particulier");
+             lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+             lieu.create();
+             int lieuId=lieu.getIdLieu();
+             en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...");
+ 			 en1.create();
+             en2 = EnigmeDB.rechEnigmeLieu(lieuId);
+             System.out.println("OK enigme trouvé : " + en2);
+         }
+         catch(Exception e){
+             System.err.println("exception de recherche "+e);
+         }
+         try{
+             en1.delete();
+             lieu.delete();
+             }
+          catch(Exception e){}
+          
+         
+         try {
+        	System.out.println("---------------------------------------------------");
+ 			System.out.println("Test de recherche infructueuse d'une enigme pour un lieu sans enigme");
+ 			lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+            lieu.create();
+            int lieuId=lieu.getIdLieu();
+            en1=EnigmeDB.rechEnigmeLieu(lieuId);
+ 			System.err.println("BAD recherche");
+
+ 		} catch (Exception e) {
+ 			System.out.println("OK exception normale de recherche lieu sans enigme" + e);
+ 		}
+         
+         try{
+             lieu.delete();
+             }
+          catch(Exception e){}
+ 		try {
+ 			con.close();
+ 		} catch (Exception e) {
+ 		}
 	    
 	}
 }
