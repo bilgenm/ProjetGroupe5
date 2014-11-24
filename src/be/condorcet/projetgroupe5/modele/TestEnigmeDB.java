@@ -2,9 +2,7 @@ package be.condorcet.projetgroupe5.modele;
 
 import java.sql.Connection;
 
-import modele.DBConnection;
-import modele.EnigmeDB;
-import modele.LieuDB;
+
 
 
 public class TestEnigmeDB {
