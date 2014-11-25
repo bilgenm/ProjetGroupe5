@@ -112,7 +112,7 @@ public class EnigmeDB extends Enigme implements CRUD {
           	}
         }
         catch(Exception e){
-        	//Log.d("connexion","erreur"+e);   
+        	Log.d("connexion","erreur"+e);   
             throw new Exception("Erreur de lecture "+e.getMessage());
         }
         finally{ 

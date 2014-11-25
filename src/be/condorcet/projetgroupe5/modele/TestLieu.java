@@ -3,6 +3,7 @@ package be.condorcet.projetgroupe5.modele;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+
 public class TestLieu {
 	public static void main(String[] args) {
 		DBConnection dbc = new DBConnection();
@@ -12,7 +13,13 @@ public class TestLieu {
 			System.exit(0);
 		}
 		LieuDB.setConnection(con);
-		LieuDB lieu1 = null, lieu2 = null;
+		JeuDB.setConnection(con);
+		JoueurDB.setConnection(con);
+		EnigmeDB.setConnection(con);
+		LieuDB lieu1 = null, lieu2 = null,lieu3=null, lieu4=null;
+		JeuDB jeu=null;
+		JoueurDB j1=null,j2=null;
+		EnigmeDB enigme=null;
 		try {
 			System.out.println("Test ajout fructueux de lieu");
 			System.out.println("**************************************************************************");
@@ -149,16 +156,154 @@ public class TestLieu {
 		} catch (Exception e) {
 			System.out.println("OK exception normale d'effacement du lieu " + e);
 		}
-		
 		try {
+			System.out.println("Test d'effacement fructueux(lieu n'a pas de successeur et il est début d'un jeu)");
+			System.out.println("**************************************************************************");
+			lieu1 = new LieuDB("La collégiale Sainte-Waudru","La collégiale a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453263,3.947689);
+	        lieu1.create();
+	        int numLieu = lieu1.getIdLieu();
+	        jeu=new JeuDB(numLieu,"MONS");
+	        jeu.create();
+			lieu1.delete();
+			lieu2 = new LieuDB(numLieu);
+			lieu2.read();
+			System.err.println("BAD effacement non effectué pour identifiant du lieu ="
+					+ lieu2.getIdLieu());
 
+		} catch (Exception e) {
+			System.out.println("OK exception normale d'effacement du lieu " + e);
+			// e.printStackTrace();
+		}
+		try {
+			System.out.println("Test d'effacement infructueux(lieu est recherché par un jouer)");
+			System.out.println("**************************************************************************");
+			lieu1 = new LieuDB("La collégiale Sainte-Waudru","La collégiale a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453263,3.947689);
+	        lieu1.create();
+	        int numLieu = lieu1.getIdLieu();
+	        jeu=new JeuDB(numLieu,"MONS");
+	        jeu.create();
+	        j1 = new JoueurDB("Mustafa", "Bilgen", "bilgen55", "aaa");
+			j1.create();
+			int numJoueur = j1.getIdJoueur();
+			j1.setLieuRech(numLieu);
+			j1.updateLieuRech();
+			j2 = new JoueurDB(numJoueur);
+			j2.read();
+			lieu1.delete();
+			//lieu2 = new LieuDB(numLieu);
+			//lieu2.read();
+			System.err.println("BAD effacement non effectué pour identifiant du lieu ="
+					+ lieu1.getIdLieu());
+
+		} catch (Exception e) {
+			System.out.println("OK exception normale d'effacement du lieu qui est recherché par un ou plusieurs joueurs" + e);
+			// e.printStackTrace();
+		}
+		try {
+			jeu.delete();
+			j1.delete();
+			lieu1.delete();
+		} catch (Exception e) {
+		}
+		try {
+			System.out.println("Test d'effacement fructueux(lieu a successeur,est début d'un jeu ");
+			System.out.println("et il y a des engimes pour ce lieu)");
+			System.out.println("**************************************************************************");
+			lieu1 = new LieuDB("La collégiale Sainte-Waudru","La collégiale a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453263,3.947689);
+	        lieu1.create();
+	        int numLieu = lieu1.getIdLieu();
+	        lieu2 = new LieuDB("Successeur de collégiale Sainte-Waudru","Ce battiment a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453273,3.947489);
+	        lieu2.create();
+	        int numLieu2 = lieu2.getIdLieu();
+	        lieu1.setSuccesseur(numLieu2);
+	        lieu1.update();
+	        lieu3 = new LieuDB("Successeur de Successeur de collégiale Sainte-Waudru","A été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453273,3.947489);
+	        lieu3.create();
+	        int numLieu3 = lieu3.getIdLieu();
+	        lieu2.setSuccesseur(numLieu3);
+	        lieu2.update();
+	        jeu=new JeuDB(numLieu,"MONS");
+	        jeu.create();
+	        enigme = new EnigmeDB(numLieu, "fr","le pont que vous ...");	
+			enigme.create();
+			lieu1.delete();
+			lieu4 = new LieuDB(numLieu);
+			lieu4.read();
+			System.err.println("BAD effacement non effectué pour identifiant du lieu ="
+					+ lieu1.getIdLieu());
+
+		} catch (Exception e) {
+			System.out.println("OK exception normale d'effacement de lieu a été bien supprimé" + e);
+
+			// e.printStackTrace();
+		}
+		try {
+			jeu.delete();
+			lieu3.delete();
+			lieu2.delete();
+		} catch (Exception e) {
+		}
+		try {
+			System.out.println("Test d'effacement fructueux(lieu a successeur,mais il n'est pas ");
+			System.out.println("début d'un jeu et il y a des engimes pour ce lieu)");
+			System.out.println("**************************************************************************");
+			lieu1 = new LieuDB("La collégiale Sainte-Waudru","La collégiale a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453263,3.947689);
+	        lieu1.create();
+	        int numLieu = lieu1.getIdLieu();
+	        lieu2 = new LieuDB("Successeur de collégiale Sainte-Waudru","Ce battiment a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453273,3.947489);
+	        lieu2.create();
+	        int numLieu2 = lieu2.getIdLieu();
+	        lieu1.setSuccesseur(numLieu2);
+	        lieu1.update();
+	        lieu3 = new LieuDB("Successeur de Successeur de collégiale Sainte-Waudru","A été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...",50.453273,3.947489);
+	        lieu3.create();
+	        int numLieu3 = lieu3.getIdLieu();
+	        lieu2.setSuccesseur(numLieu3);
+	        lieu2.update();
+	        jeu=new JeuDB(numLieu,"MONS");
+	        jeu.create();
+	        enigme = new EnigmeDB(numLieu2, "fr","le pont que vous ...");	
+			enigme.create();
+			lieu2.delete();
+			lieu4 = new LieuDB(numLieu2);
+			lieu4.read();
+			System.err.println("BAD effacement non effectué pour identifiant du lieu ="
+					+ lieu2.getIdLieu());
+
+		} catch (Exception e) {
+			System.out.println("OK exception normale d'effacement de lieu " + e);
+			// e.printStackTrace();
+		}
+		try {
+			jeu.delete();
+			lieu3.delete();
+			lieu1.delete();
+		} catch (Exception e) {
+		}
+	    try {
 			System.out.println("Test de recherche fructueuse d'un lieu et ses successeurs");
 			System.out.println("**************************************************************************");
 			ArrayList<LieuDB> listeLieux = LieuDB.rechLieu(135);
 			for (LieuDB lieu : listeLieux) {
 				System.out.println(lieu);
 			}
-			System.out.println("OK recherche fonctionnelle :)");
+			System.out.println("OK recherche fonctionnelle ");
 
 		} catch (Exception e) {
 			System.err.println("exception de recherche " + e);
@@ -181,6 +326,5 @@ public class TestLieu {
 		} catch (Exception e) {
 		}
 	}
-
 }
 

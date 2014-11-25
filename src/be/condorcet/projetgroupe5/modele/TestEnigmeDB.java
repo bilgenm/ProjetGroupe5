@@ -17,7 +17,7 @@ public class TestEnigmeDB {
 	    EnigmeDB.setConnection(con);
 	    LieuDB.setConnection(con);
 	    EnigmeDB en1=null,en2=null;
-	    LieuDB lieu=null, lieu2=null;
+	    LieuDB lieu=null;
 	    
 	    
 	    try {
