@@ -5,6 +5,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry exported="true" kind="lib" path="M:/Info_gestion3I/Innov_techn3I/ojdbc14.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/fichierJarAndroid/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
