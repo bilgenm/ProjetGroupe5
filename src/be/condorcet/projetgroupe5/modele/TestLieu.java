@@ -234,7 +234,9 @@ public class TestLieu {
 	        lieu2.update();
 	        jeu=new JeuDB(numLieu,"MONS");
 	        jeu.create();
-	        enigme = new EnigmeDB(numLieu, "fr","le pont que vous ...");	
+	        enigme = new EnigmeDB(numLieu, "fr","le pont que vous ...","Ce battiment a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...");	
 			enigme.create();
 			lieu1.delete();
 			lieu4 = new LieuDB(numLieu);
@@ -278,7 +280,9 @@ public class TestLieu {
 	        lieu2.update();
 	        jeu=new JeuDB(numLieu,"MONS");
 	        jeu.create();
-	        enigme = new EnigmeDB(numLieu2, "fr","le pont que vous ...");	
+	        enigme = new EnigmeDB(numLieu2, "fr","le pont que vous ...","Ce battiment a été bâtie au XVe siècle "
+					+ "sur ordre des chanoinesses. Elle constitue un symbole majeur de la ville de"
+					+ "Mons...");	
 			enigme.create();
 			lieu2.delete();
 			lieu4 = new LieuDB(numLieu2);

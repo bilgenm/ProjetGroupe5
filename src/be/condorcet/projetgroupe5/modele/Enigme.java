@@ -17,6 +17,10 @@ public class Enigme {
 	 * texte de l'enigme
 	 */
 	protected String texte;
+	/**
+	 * description du lieu
+	 */
+	protected String descLieu;
 	
 
 	/**
@@ -32,13 +36,15 @@ public class Enigme {
 	 * @param lieuEnig lieu auquel l'enigme correspond
 	 * @param langue langue de l'enigme
 	 * @param texte texte de l'enigme
+	 * @param descLieu description du lieu
 	 */
-	public Enigme(int idEnigme, int lieuEnig, String langue, String texte) {
+	public Enigme(int idEnigme, int lieuEnig, String langue, String texte, String descLieu) {
 		super();
 		this.idEnigme = idEnigme;
 		this.lieuEnig = lieuEnig;
 		this.langue = langue;
 		this.texte = texte;
+		this.descLieu =descLieu;
 	}
 
 	/**
@@ -104,17 +110,33 @@ public class Enigme {
 	public void setTexte(String texte) {
 		this.texte = texte;
 	}
-
 	
+	/**
+	 * getter descLieu
+	 * @return description du lieu
+	 */
+	public String getDescLieu() {
+		return descLieu;
+	}
+	/**
+     * setter descLieu
+     * @param descLieu description du lieu 
+     */
+	public void setDescLieu(String descLieu) {
+		this.descLieu = descLieu;
+	}
+
+
 	/**
 	 * méthode toString
 	 * @return informations complètes
 	 */
+	
 	@Override
 	public String toString() {
-		return "Enigme [id Enigme :" + idEnigme + ", lieu Enigme :" + lieuEnig + ", Langue :" + langue + ", Texte :" + texte +"]";
-				
+		return "Enigme [idEnigme=" + idEnigme + ", lieuEnig=" + lieuEnig
+				+ ", langue=" + langue + ", texte=" + texte + ", descLieu="
+				+ descLieu + "]";
 	}
-	
 }
 

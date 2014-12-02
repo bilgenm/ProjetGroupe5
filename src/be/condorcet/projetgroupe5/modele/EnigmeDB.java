@@ -28,9 +28,10 @@ public class EnigmeDB extends Enigme implements CRUD {
 	 * @param lieuEnig lieu auquel l'enigme correspond
 	 * @param langue langue de l'enigme
 	 * @param texte texte de l'enigme
+	 * @param descLieu description du lieu
 	 */
-	public EnigmeDB(int lieuEnig, String langue, String texte){	
-      super(0,lieuEnig,langue,texte);
+	public EnigmeDB(int lieuEnig, String langue, String texte, String descLieu){	
+      super(0,lieuEnig,langue,texte,descLieu);
    }
    
    	/**
@@ -40,9 +41,10 @@ public class EnigmeDB extends Enigme implements CRUD {
    	 * @param lieuEnig lieu auquel l'enigme correspond
    	 * @param langue langue de l'enigme
    	 * @param texte texte de l'enigme
+   	 * @param descLieu description du lieu
    	 */
-   	public EnigmeDB(int idEnigme, int lieuEnig, String langue, String texte){	
-       super(idEnigme, lieuEnig, langue, texte);	
+   	public EnigmeDB(int idEnigme, int lieuEnig, String langue, String texte, String descLieu){	
+       super(idEnigme, lieuEnig, langue, texte,descLieu);	
    	}   
    
    	/**
@@ -52,7 +54,7 @@ public class EnigmeDB extends Enigme implements CRUD {
    	 * @param idEnigme
    	 */
    	public EnigmeDB(int idEnigme){
-       super(idEnigme,0 , "", "");
+       super(idEnigme,0 , "", "", "");
     }
 
    	/**
@@ -71,12 +73,13 @@ public class EnigmeDB extends Enigme implements CRUD {
     public void create() throws Exception{
     	CallableStatement cstmt=null;
         try{
-        	String req = "call CREATEENIGME(?,?,?,?)";
+        	String req = "call CREATEENIGME(?,?,?,?,?)";
         	cstmt = dbConnect.prepareCall(req);
         	cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
         	cstmt.setInt(2,lieuEnig);
         	cstmt.setString(3,langue);
         	cstmt.setString(4,texte);
+        	cstmt.setString(5,descLieu);
         	cstmt.executeUpdate();
         	this.idEnigme=cstmt.getInt(1);
   	   	 }
@@ -106,6 +109,7 @@ public class EnigmeDB extends Enigme implements CRUD {
           		this.lieuEnig=rs.getInt("LIEU");
           		this.langue=rs.getString("LANGUE_ENIG");
           		this.texte=rs.getString("TEXTE_ENIG");
+          		this.descLieu=rs.getString("DESC_LIEU");
           	}
           	else { 
           		throw new Exception("Code inconnu");
@@ -124,25 +128,28 @@ public class EnigmeDB extends Enigme implements CRUD {
      }
         
     /**
-     * méthode statique permettant de récupérer l'enigme correspondant au lieu recherché
-     * @param lieuEnig lieu auquel correspond l'enigme
+     * méthode statique permettant de récupérer l'enigme correspondant
+     * au lieu recherché et dans une langue définie
+     * @param lieuRech lieu auquel correspond l'enigme
+     * @param langueRech langue dans laquelle on veut afficher
 	 * @return enigme du lieu recherché
-	 * @throws Exception lieu inconnu
+	 * @throws Exception lieu inconnu, langue inconnue
 	 */
-	 public static EnigmeDB rechEnigmeLieu(int lieuRech)throws Exception{
-		    String req = "select * from ENIGME where lieu = ?";
+	 public static EnigmeDB rechEnigmeLieu(int lieuRech, String langueRech)throws Exception{
+		    String req = "select * from ENIGME where lieu = ? and langue_enig = ?";
 			PreparedStatement pstmt=null;
 		    try{
 				pstmt = dbConnect.prepareStatement(req);
 				pstmt.setInt(1,lieuRech);
+				pstmt.setString(2, langueRech);
 				ResultSet rs=(ResultSet)pstmt.executeQuery();
 				if(rs.next()){
 	                int idEnig=rs.getInt("ID_ENIGME");
-					String lang=rs.getString("LANGUE_ENIG");
 					String tex=rs.getString("TEXTE_ENIG");
-					return new EnigmeDB(idEnig,lieuRech,lang,tex);
+					String descl=rs.getString("DESC_LIEU");
+					return new EnigmeDB(idEnig,lieuRech,langueRech,tex,descl);
 				}
-				else throw new Exception("lieu inconnu");
+				else throw new Exception("lieu inconnu, langue inconnue");
 	        }
 		    catch(Exception e){
 				throw new Exception("Erreur de lecture "+e.getMessage());

@@ -26,7 +26,7 @@ public class TestEnigmeDB {
 	    	lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
-	    	en1 = new EnigmeDB(lieuId, "fr","trouvez le pont...");
+	    	en1 = new EnigmeDB(lieuId, "fr","trouvez le pont...","Le pont bla bla bla...");
 			en1.create();
 			int idEn = en1.getIdEnigme();
 			en2 = new EnigmeDB(idEn);
@@ -50,7 +50,7 @@ public class TestEnigmeDB {
             lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
-            en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...");
+            en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
 			en1.create();
 			int idEn = en1.getIdEnigme();
 			System.out.println("enigme avant modification :" +en1);
@@ -79,7 +79,7 @@ public class TestEnigmeDB {
             lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
-            en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...");
+            en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
 			en1.create();
 			int idEn = en1.getIdEnigme();
             en1.delete();
@@ -114,9 +114,9 @@ public class TestEnigmeDB {
              lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
              lieu.create();
              int lieuId=lieu.getIdLieu();
-             en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...");
+             en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
  			 en1.create();
-             en2 = EnigmeDB.rechEnigmeLieu(lieuId);
+             en2 = EnigmeDB.rechEnigmeLieu(lieuId,"fr");
              System.out.println("OK enigme trouvé : " + en2);
          }
          catch(Exception e){
@@ -135,7 +135,7 @@ public class TestEnigmeDB {
  			lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
-            en1=EnigmeDB.rechEnigmeLieu(lieuId);
+            en1=EnigmeDB.rechEnigmeLieu(lieuId,"fr");
  			System.err.println("BAD recherche");
 
  		} catch (Exception e) {
