@@ -4,5 +4,7 @@
     <string name="app_name">ProjetGroupe5</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_rech_ville">RechVilleActivity</string>
+    <string name="title_activity_rech_enigme">RechEnigmeActivity</string>
 
 </resources>
