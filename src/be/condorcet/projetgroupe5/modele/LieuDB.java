@@ -30,26 +30,24 @@ public class LieuDB extends Lieu implements CRUD {
 	 * pas être précisé,il sera affecté par la base de données lors de la
 	 * création
 	 * @param nomLieu nom du lieu
-	 * @param descLieu description du lieu
 	 * @param latLieu latitude du lieu
 	 * @param longLieu longitude du lieu
 	 */
-	public LieuDB(String nomLieu, String descLieu, double latLieu,
+	public LieuDB(String nomLieu, double latLieu,
 			double longLieu) {
-		super(0, nomLieu, descLieu, latLieu, longLieu);
+		super(0, nomLieu, latLieu, longLieu);
 	}
 	/**
 	 * constructeur paramétré à utiliser lorsque le lieu est déjà présent
      * dans la base de données  
 	 * @param successeur successeur du lieu
 	 * @param nomLieu nom du lieu
-	 * @param descLieu description du lieu
 	 * @param latLieu latitude du lieu
 	 * @param longLieu longitude du lieu
 	 */
-	public LieuDB(int successeur, String nomLieu, String descLieu, double latLieu,
+	public LieuDB(int successeur, String nomLieu, double latLieu,
 			double longLieu) {
-		super(0, successeur, nomLieu, descLieu, latLieu, longLieu);
+		super(0, successeur, nomLieu, latLieu, longLieu);
 	}
 
 	/**
@@ -58,13 +56,12 @@ public class LieuDB extends Lieu implements CRUD {
 	 * @param idLieu identifiant du lieu
 	 * @param successeur successeur du lieu
 	 * @param nomLieu nom du lieu
-	 * @param descLieu description du lieu
 	 * @param latLieu latitude du lieu
 	 * @param longLieu longitude du lieu
 	 */
-	public LieuDB(int idLieu, int successeur,String nomLieu, String descLieu, double latLieu,
+	public LieuDB(int idLieu, int successeur,String nomLieu, double latLieu,
 			double longLieu) {
-		super(idLieu, successeur, nomLieu, descLieu, latLieu, longLieu);
+		super(idLieu, successeur, nomLieu, latLieu, longLieu);
 	}
 	/**
 	 * constructeur à utiliser lorsque le lieu est déjà présent dans la base
@@ -74,7 +71,7 @@ public class LieuDB extends Lieu implements CRUD {
 	 * @param idLieu identifiant du lieu
 	 */
 	public LieuDB(int idLieu) {
-		super(idLieu, 0, "", "", 0, 0);
+		super(idLieu, 0, "", 0, 0);
 	}
 
 	/**
@@ -93,13 +90,12 @@ public class LieuDB extends Lieu implements CRUD {
 	public void create() throws Exception {
 		CallableStatement cstmt = null;
 		try {
-			String req = "call createlieu(?,?,?,?,?)";
+			String req = "call createlieu(?,?,?,?)";
 			cstmt = dbConnect.prepareCall(req);
 			cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
 			cstmt.setString(2, nomLieu);
-			cstmt.setString(3, descLieu);
-			cstmt.setDouble(4, latLieu);
-			cstmt.setDouble(5, longLieu);
+			cstmt.setDouble(3, latLieu);
+			cstmt.setDouble(4, longLieu);
 			cstmt.executeUpdate();
 			this.idLieu = cstmt.getInt(1);
 		} catch (Exception e) {
@@ -127,7 +123,6 @@ public class LieuDB extends Lieu implements CRUD {
 			if (rs.next()) {
 				this.successeur = rs.getInt("SUCCESSEUR");
 				this.nomLieu = rs.getString("NOM_LIEU");
-				this.descLieu = rs.getString("DESC_LIEU");
 				this.latLieu = rs.getDouble("LATITUDE");
 				this.longLieu = rs.getDouble("LONGITUDE");
 			} else {
@@ -217,10 +212,9 @@ public class LieuDB extends Lieu implements CRUD {
 					int idLieu = rs.getInt("ID_LIEU");
 					int successeur = rs.getInt("SUCCESSEUR");
 					String nomLieu = rs.getString("NOM_LIEU");
-					String descLieu = rs.getString("DESC_LIEU");
 					double latLieu = rs.getDouble("LATITUDE");
 					double longLieu = rs.getDouble("LONGITUDE");
-					listeLieux.add(new LieuDB(idLieu,successeur,nomLieu,descLieu,latLieu,longLieu));
+					listeLieux.add(new LieuDB(idLieu,successeur,nomLieu,latLieu,longLieu));
 					lieuRech=successeur;
 
 				} else {

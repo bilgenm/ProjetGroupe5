@@ -23,7 +23,7 @@ public class TestEnigmeDB {
 	    try {
 	    	System.out.println("---------------------------------------------------");
 	    	System.out.println("Test ajout et lecture correcte");
-	    	lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+	    	lieu=new LieuDB("Pont de xyz", 38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
 	    	en1 = new EnigmeDB(lieuId, "fr","trouvez le pont...","Le pont bla bla bla...");
@@ -47,7 +47,7 @@ public class TestEnigmeDB {
 		try{ 
         	System.out.println("---------------------------------------------------");
             System.out.println("test mise à jour du texte de l'enigme");
-            lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Pont de xyz",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
@@ -76,7 +76,7 @@ public class TestEnigmeDB {
         try{
         	System.out.println("---------------------------------------------------");
             System.out.println("test d'effacement fructueux");
-            lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Pont de xyz",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
@@ -111,7 +111,7 @@ public class TestEnigmeDB {
          try{
          	System.out.println("---------------------------------------------------");
              System.out.println("test recherche fructueuse d'un enigme pour un lieu particulier");
-             lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+             lieu=new LieuDB("Pont de xyz",38.4566,3.56565);
              lieu.create();
              int lieuId=lieu.getIdLieu();
              en1 = new EnigmeDB(lieuId, "fr","le pont que vous ...","Le pont bla bla bla...");
@@ -132,7 +132,7 @@ public class TestEnigmeDB {
          try {
         	System.out.println("---------------------------------------------------");
  			System.out.println("Test de recherche infructueuse d'une enigme pour un lieu sans enigme");
- 			lieu=new LieuDB("Pont de xyz","Le pont bla bla bla...", 38.4566,3.56565);
+ 			lieu=new LieuDB("Pont de xyz",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             en1=EnigmeDB.rechEnigmeLieu(lieuId,"fr");

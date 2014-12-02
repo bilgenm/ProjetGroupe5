@@ -22,7 +22,7 @@ public class TestJeuDB {
 	    try{
 	    	System.out.println("---------------------------------------------------");
             System.out.println("test ajout fructeux et lecture correcte");
-            lieu=new LieuDB("Cathédrale de abc","La cathédrale bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Cathédrale de abc",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             jeu1=new JeuDB(lieuId,"abc");
@@ -50,7 +50,7 @@ public class TestJeuDB {
         try{ 
         	System.out.println("---------------------------------------------------");
             System.out.println("test doublon");
-            lieu=new LieuDB("Cathédrale de abc","La cathédrale bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Cathédrale de abc",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             jeu1=new JeuDB(lieuId,"abc");
@@ -73,14 +73,14 @@ public class TestJeuDB {
         try{ 
         	System.out.println("---------------------------------------------------");
             System.out.println("test mise à jour du lieu de debut d'un jeu");
-            lieu=new LieuDB("Cathédrale de abc","La cathédrale bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Cathédrale de abc",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             jeu1=new JeuDB(lieuId,"abc");
             jeu1.create();
             int idJ=jeu1.getIdVille();
             System.out.println("jeu1 avant modification :" +jeu1);
-            lieu2=new LieuDB("Monument de abc","Le monument bla bla bla...", 36.4566,5.56565);
+            lieu2=new LieuDB("Monument de abc",36.4566,5.56565);
             lieu2.create();
             int lieuId2=lieu2.getIdLieu();
             jeu1.setDebut(lieuId2);
@@ -109,7 +109,7 @@ public class TestJeuDB {
         try{
         	System.out.println("---------------------------------------------------");
             System.out.println("test d'effacement fructueux");
-            lieu=new LieuDB("Cathédrale de abc","La cathédrale bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Cathédrale de abc",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             jeu1=new JeuDB(lieuId,"abc");
@@ -145,7 +145,7 @@ public class TestJeuDB {
         try{
         	System.out.println("---------------------------------------------------");
             System.out.println("test recherche fructueuse du lieu de debut du jeu pour une ville particulière");
-            lieu=new LieuDB("Cathédrale de abc","La cathédrale bla bla bla...", 38.4566,3.56565);
+            lieu=new LieuDB("Cathédrale de abc",38.4566,3.56565);
             lieu.create();
             int lieuId=lieu.getIdLieu();
             jeu1 = new JeuDB(lieuId,"abc");

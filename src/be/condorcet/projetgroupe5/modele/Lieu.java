@@ -23,10 +23,6 @@ public class Lieu {
 	 */
 	protected String nomLieu;
 	/**
-	 * description du lieu
-	 */
-	protected String descLieu;
-	/**
 	 * latitude du lieu
 	 */
 	protected double latLieu;
@@ -47,17 +43,15 @@ public class Lieu {
 	 * @param idLieu identifiant du lieu
 	 * @param successeur successeur du lieu
 	 * @param nomLieu nom du lieu
-	 * @param descLieu description du lieu
 	 * @param latLieu latitude du lieu
 	 * @param longLieu longitude du lieu
 	 */
-	public Lieu(int idLieu, int successeur, String nomLieu, String descLieu,
-			double latLieu, double longLieu) {
+	public Lieu(int idLieu, int successeur, String nomLieu, double latLieu,
+	double longLieu) {
 		super();
 		this.idLieu = idLieu;
 		this.successeur = successeur;
 		this.nomLieu = nomLieu;
-		this.descLieu = descLieu;
 		this.latLieu = latLieu;
 		this.longLieu = longLieu;
 	}
@@ -66,16 +60,13 @@ public class Lieu {
 	 * constructeur paramétré
 	 * @param idLieu identifiant du lieu
 	 * @param nomLieu nom du lieu
-	 * @param descLieu description du lieu
 	 * @param latLieu latitude du lieu
 	 * @param longLieu longitude du lieu
 	 */
-	public Lieu(int idLieu, String nomLieu, String descLieu,
-			double latLieu, double longLieu) {
+	public Lieu(int idLieu, String nomLieu, double latLieu, double longLieu) {
 		super();
 		this.idLieu = idLieu;
 		this.nomLieu = nomLieu;
-		this.descLieu = descLieu;
 		this.latLieu = latLieu;
 		this.longLieu = longLieu;
 	}
@@ -129,22 +120,6 @@ public class Lieu {
 	}
 
 	/**
-	 * getter description du lieu
-	 * @return description du lieu
-	 */
-	public String getDescLieu() {
-		return descLieu;
-	}
-
-	/**
-	 * setter description du lieu
-	 * @param descLieu description du lieu
-	 */
-	public void setDescLieu(String descLieu) {
-		this.descLieu = descLieu;
-	}
-
-	/**
 	 * getter latitude du lieu
 	 * @return latitude du lieu
 	 */
@@ -183,8 +158,8 @@ public class Lieu {
 	@Override
 	public String toString() {
 		return "Lieu [idLieu=" + idLieu + ", successeur=" + successeur
-				+ ", nomLieu=" + nomLieu + ", descLieu=" + descLieu
-				+ ", latLieu=" + latLieu + ", longLieu=" + longLieu + "]";
+				+ ", nomLieu=" + nomLieu + ", latLieu=" + latLieu
+				+ ", longLieu=" + longLieu + "]";
 	}
 }
 
