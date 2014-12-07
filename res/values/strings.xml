@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ProjetGroupe5</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Jeu de piste</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_rech_ville">RechVilleActivity</string>
-    <string name="title_activity_rech_enigme">RechEnigmeActivity</string>
+    <string name="lblchoix">Choisissez une ville</string>
+    <string name="chercher">Chercher</string>
+    <string name="selection">Selection</string>
+    <string name="affiche">ici affichage</string>
+    <string name="title_activity_rech_ville">Recherchez une ville</string>
+    <string name="title_activity_rech_enigme">Parcourir les énigmes</string>
+    <string name="lblieu">Lieu n°:</string>
+    <string name="btabandonne">Abandonner</string>
+    <string name="btgo">Continuer</string>
 
 </resources>

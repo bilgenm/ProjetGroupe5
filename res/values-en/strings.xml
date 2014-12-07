@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Paper chase</string>
+    <string name="action_settings">Settings</string>
+    <string name="lblchoix">Choose a city</string>
+    <string name="chercher">Search</string>
+    <string name="selection">Selection</string>
+    <string name="affiche">ici affichage</string>
+    <string name="title_activity_rech_ville">Look for a city</string>
+    <string name="title_activity_rech_enigme">Browse the riddles</string>
+    <string name="lblieu">Place n°:</string>
+    <string name="btabandonne">Abandon</string>
+    <string name="btgo">Continue</string>
+
+</resources>
