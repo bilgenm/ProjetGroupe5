@@ -8,10 +8,12 @@ package be.condorcet.projetgroupe5.modele;
 
 
 import java.sql.*;
-
+import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class JeuDB extends Jeu implements CRUD {
+public class JeuDB extends Jeu implements CRUD,Parcelable  {
 
 	/**
 	 * connexion à la base de données partagée entre toutes les instances(statique)
@@ -160,6 +162,41 @@ public class JeuDB extends Jeu implements CRUD {
             catch (Exception e){}
         }
     }
+    
+    /**
+   	* méthode statique permettant de récupérer toutes les villes 
+   	* @return liste des villes
+   	* @throws Exception aucune ville trouvée
+   	*/
+    
+	public static ArrayList<JeuDB> listeVilles() throws Exception {
+		ArrayList<JeuDB> listeVilles = new ArrayList<JeuDB>();
+		String req = "select * from JEU";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = dbConnect.prepareStatement(req);
+			ResultSet rs = (ResultSet) pstmt.executeQuery();
+			boolean trouve = false;
+			while (rs.next()) {
+				trouve = true;
+				int idV = rs.getInt("ID_VILLE");
+				int debutR = rs.getInt("DEBUT");
+				String nomVille = rs.getString("NOM_VILLE");
+				listeVilles.add(new JeuDB(idV, debutR, nomVille));
+			}
+			if (!trouve)
+				throw new Exception("Aucun ville trouvée!!!");
+			else
+				return listeVilles;
+		} catch (Exception e) {
+			throw new Exception("Erreur de lecture " + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception e) {
+			}
+		}
+	}
 	
     /**
     * mise à jour des données du jeu sur base de son identifiant
@@ -215,5 +252,33 @@ public class JeuDB extends Jeu implements CRUD {
             catch (Exception e){}
         }
     }
+    @Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(idVille);
+		dest.writeInt(debut);
+		dest.writeString(nomVille);	
+	}
+	public static final Parcelable.Creator<JeuDB> CREATOR = new Parcelable.Creator<JeuDB>() {
+		  @Override
+		  public JeuDB createFromParcel(Parcel source) {
+		    return new JeuDB(source);
+		  }
+		  @Override
+		  public JeuDB[] newArray(int size) {
+		    return new JeuDB[size];
+		  }
+		};
+
+	public JeuDB(Parcel in) {
+		  idVille = in.readInt();
+		  debut = in.readInt();
+		  nomVille = in.readString();
+		}
 	
 }
