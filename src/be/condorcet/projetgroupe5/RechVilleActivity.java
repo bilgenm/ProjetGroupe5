@@ -2,7 +2,6 @@ package be.condorcet.projetgroupe5;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import be.condorcet.projetgroupe5.modele.*;
 import android.support.v7.app.ActionBarActivity;
 import android.app.ProgressDialog;
@@ -34,8 +33,23 @@ public class RechVilleActivity extends ActionBarActivity {
 		// spin c'est l'id de la liste déroulante
 		list = (Spinner) findViewById(R.id.spin);
 		tv = (TextView) findViewById(R.id.aff);
-		MyAccesDBListeJeux adb = new MyAccesDBListeJeux(RechVilleActivity.this);
-		adb.execute();
+		if (savedInstanceState != null) {
+			 listeJeux = savedInstanceState.getParcelableArrayList("myKey");
+		        if (listeJeux != null) {
+		        	int tailleListe = listeJeux.size();
+					String[] tabVilles = new String[tailleListe];
+					for(int i=0;i<tailleListe;i++) {
+						tabVilles[i] = listeJeux.get(i).getNomVille();
+					}
+					adapter = new ArrayAdapter<String>(RechVilleActivity.this,android.R.layout.simple_spinner_item,tabVilles);
+					adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					list.setAdapter(adapter);	
+		        }
+		 }
+		 else {
+			 MyAccesDBListeJeux adb = new MyAccesDBListeJeux(RechVilleActivity.this);
+			 adb.execute();
+		 }
 	}
 	public void gestionSearch(View view){
 		int pos = list.getSelectedItemPosition();
@@ -44,6 +58,15 @@ public class RechVilleActivity extends ActionBarActivity {
 		Intent i = new Intent(RechVilleActivity.this,RechEnigmeActivity.class);
 		i.putExtra(IDJEU, j);
 		startActivity(i);
+	}
+	/* pour sauvegarde la liste avec le lieux si on
+	 * change l'orientation de l'appareil 
+	 * et on change l'activité */
+	public void onSaveInstanceState(Bundle savedState) {
+	    super.onSaveInstanceState(savedState);
+	    ArrayList<JeuDB> val = new ArrayList<JeuDB>();
+	    val = listeJeux;
+	    savedState.putParcelableArrayList("myKey", val);
 	}
 
 	@Override
