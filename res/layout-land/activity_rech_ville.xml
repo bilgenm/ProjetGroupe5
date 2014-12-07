@@ -10,6 +10,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="be.condorcet.projetgroupe5.RechVilleActivity" >
+    
+     <TextView
+        android:id="@+id/msgChoix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#FFFFFF" 
+        android:text="@string/lblchoix" />
 
    <Spinner
         android:id="@+id/spin"
@@ -23,6 +33,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="100dp"
         android:layout_height="30dp"
+        android:onClick="gestionSearch" 
         android:background="#8ECE03"
         android:text="@string/chercher" />
 
