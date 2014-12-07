@@ -78,7 +78,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 					if (dist < 25) {
 						txtEnigme.setText("Vous avez trouvé!!!");
 						msgDist.setText("Description: "+ listeEnigmes.get(cptLieu).getDescLieu());
-						if ((cptLieu + 1) == listeLieux.size() - 1) {
+						if (cptLieu == listeLieux.size()-1) {
 							btAbandonner.setVisibility(View.INVISIBLE);
 						}
 						btContinue.setVisibility(View.VISIBLE);
