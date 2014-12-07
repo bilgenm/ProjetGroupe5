@@ -119,7 +119,7 @@ public class JoueurDB extends Joueur implements CRUD {
 	 * @throws Exception code inconnu
 	 */
 	public void read() throws Exception {
-		String req = "select * from joueur where id_joueur =?";
+		String req = "select * from joueur where id_joueur=?";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = dbConnect.prepareStatement(req);
