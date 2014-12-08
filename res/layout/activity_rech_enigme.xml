@@ -34,14 +34,14 @@
                 android:id="@+id/numlieu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ici numero" />
+                android:text="ici numero"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/enigrech"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ici texte enigme"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFFFFF" />
 
@@ -49,7 +49,6 @@
             android:id="@+id/affdist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ici affich dist"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFFFFF" />
 
@@ -61,8 +60,8 @@
 
             <Button
                 android:id="@+id/abandonne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/long_bt_prt"
+                android:layout_height="@dimen/height_bt"
                 android:layout_marginLeft="73dp"
                 android:background="#8ECE03"
                 android:enabled="true"
@@ -71,8 +70,8 @@
 
             <Button
                 android:id="@+id/go"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/long_bt_prt"
+                android:layout_height="@dimen/height_bt"
                 android:layout_marginLeft="73dp"
                 android:layout_marginTop="50dp"
                 android:background="#8ECE03"

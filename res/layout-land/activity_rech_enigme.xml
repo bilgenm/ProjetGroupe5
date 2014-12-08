@@ -57,27 +57,31 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="28dp" >
 
             <Button
                 android:id="@+id/abandonne"
-                android:layout_width="@dimen/long_bt_land"
-                android:layout_height="@dimen/height_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="gestionAbandon"
-                android:layout_alignParentLeft = "true"
+                android:layout_marginLeft="73dp"
                 android:background="#8ECE03"
                 android:enabled="true"
                 android:text="@string/btabandonne" />
 
             <Button
                 android:id="@+id/go"
-                android:layout_width="@dimen/long_bt_land"
-                android:layout_height="@dimen/height_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="gestionContinue"
-                android:layout_alignParentRight="true"
+                android:layout_marginLeft="73dp"
+                android:layout_marginTop="50dp"
                 android:background="#8ECE03"
                 android:text="@string/btgo" />
         </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
+
+
