@@ -62,21 +62,23 @@
                 android:id="@+id/abandonne"
                 android:layout_width="@dimen/long_bt_prt"
                 android:layout_height="@dimen/height_bt"
-                android:layout_marginLeft="73dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
                 android:background="#8ECE03"
                 android:enabled="true"
-                android:text="@string/btabandonne"
-                android:onClick="gestionAbandon" />
+                android:onClick="gestionAbandon"
+                android:text="@string/btabandonne" />
 
             <Button
                 android:id="@+id/go"
                 android:layout_width="@dimen/long_bt_prt"
                 android:layout_height="@dimen/height_bt"
-                android:layout_marginLeft="73dp"
-                android:layout_marginTop="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
                 android:background="#8ECE03"
-                android:text="@string/btgo"
-                android:onClick="gestionContinue" />
+                android:onClick="gestionContinue"
+                android:text="@string/btgo" />
+
         </RelativeLayout>
     </LinearLayout>
 
