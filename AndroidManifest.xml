@@ -34,6 +34,10 @@
             android:name=".RechEnigmeActivity"
             android:label="@string/title_activity_rech_enigme" >
         </activity>
+        <activity
+            android:name=".InscriptionActivity"
+            android:label="@string/title_activity_inscription" >
+        </activity>
     </application>
 
 </manifest>

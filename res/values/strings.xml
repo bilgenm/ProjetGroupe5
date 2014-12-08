@@ -12,5 +12,7 @@
     <string name="lblieu">Lieu n°:</string>
     <string name="btabandonne">Abandonner</string>
     <string name="btgo">Continuer</string>
+    <string name="title_activity_inscription">InscriptionActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
