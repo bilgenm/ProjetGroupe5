@@ -32,7 +32,7 @@ public class RechVilleActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_rech_ville);
 		// spin c'est l'id de la liste déroulante
 		list = (Spinner) findViewById(R.id.spin);
-		tv = (TextView) findViewById(R.id.aff);
+		//tv = (TextView) findViewById(R.id.aff);
 		if (savedInstanceState != null) {
 			 listeJeux = savedInstanceState.getParcelableArrayList("myKey");
 		        if (listeJeux != null) {
