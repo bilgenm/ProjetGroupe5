@@ -3,8 +3,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="long_bt_land">180dp</dimen>
-    <dimen name="long_bt_prt">120dp</dimen>
+    <dimen name="long_bt_land">120dp</dimen>
+    <dimen name="long_bt_prt">110dp</dimen>
     <dimen name="long_aff">250dp</dimen>
     <dimen name="height_bt">35dp</dimen>
 
