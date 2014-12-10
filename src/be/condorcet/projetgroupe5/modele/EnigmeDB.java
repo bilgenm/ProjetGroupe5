@@ -7,9 +7,11 @@ package be.condorcet.projetgroupe5.modele;
  */
 import java.sql.*;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class EnigmeDB extends Enigme implements CRUD {
+public class EnigmeDB extends Enigme implements CRUD,Parcelable {
 	/**
 	 * connexion à la base de données partagée entre toutes les instances(statique)
 	 */
@@ -220,4 +222,37 @@ public class EnigmeDB extends Enigme implements CRUD {
 	            catch (Exception e){}
 	        }
 	    }
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(idEnigme);
+		dest.writeInt(lieuEnig);
+		dest.writeString(langue);
+		dest.writeString(texte);
+		dest.writeString(descLieu);	
+	}
+	public static final Parcelable.Creator<EnigmeDB> CREATOR = new Parcelable.Creator<EnigmeDB>() {
+		  @Override
+		  public EnigmeDB createFromParcel(Parcel source) {
+		    return new EnigmeDB(source);
+		  }
+		  @Override
+		  public EnigmeDB[] newArray(int size) {
+		    return new EnigmeDB[size];
+		  }
+		};
+
+	public EnigmeDB(Parcel in) {
+		  idEnigme = in.readInt();
+		  lieuEnig = in.readInt();
+		  langue = in.readString();
+		  texte = in.readString();
+		  descLieu = in.readString();
+	}
 }
