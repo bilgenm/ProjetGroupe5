@@ -9,9 +9,12 @@ package be.condorcet.projetgroupe5.modele;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class LieuDB extends Lieu implements CRUD {
+public class LieuDB extends Lieu implements CRUD, Parcelable {
 	/**
 	 * connexion à la base de données partagée entre toutes les
 	 * instances(statique)
@@ -238,6 +241,37 @@ public class LieuDB extends Lieu implements CRUD {
 			} catch (Exception e) {
 			}
 		}
+	}
+	
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(idLieu);
+		dest.writeInt(successeur);
+		dest.writeDouble(latLieu);
+		dest.writeDouble(longLieu);		
+	}
+	public static final Parcelable.Creator<LieuDB> CREATOR = new Parcelable.Creator<LieuDB>() {
+		  @Override
+		  public LieuDB createFromParcel(Parcel source) {
+		    return new LieuDB(source);
+		  }
+		  @Override
+		  public LieuDB[] newArray(int size) {
+		    return new LieuDB[size];
+		  }
+		};
+
+	public LieuDB(Parcel in) {
+		  idLieu = in.readInt();
+		  successeur = in.readInt();
+		  latLieu = in.readDouble();
+		  longLieu = in.readDouble();
 	}
 }
 

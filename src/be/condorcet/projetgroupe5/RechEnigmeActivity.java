@@ -27,6 +27,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 	private ArrayList<LieuDB> listeLieux = new ArrayList<LieuDB>();
 	private ArrayList<EnigmeDB> listeEnigmes = new ArrayList<EnigmeDB>();
 	private JeuDB jeuChoisi=null;
+	private long dist = 1000;
 	private int cptLieu = 0;
 	private int idLieuRech = 0;
 	private int idJ = 1;
@@ -46,8 +47,35 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		btAbandonner = (Button) findViewById(R.id.abandonne);
 		btContinue = (Button) findViewById(R.id.go);
 		btContinue.setVisibility(View.INVISIBLE);
-		MyAccesDBListeLieux adb = new MyAccesDBListeLieux(RechEnigmeActivity.this);
-		adb.execute();
+		if (savedInstanceState != null) {
+			 listeLieux = savedInstanceState.getParcelableArrayList("myListeLieux");
+			 listeEnigmes = savedInstanceState.getParcelableArrayList("myListeEnigmes");
+			 cptLieu =  savedInstanceState.getInt("myCpt");
+			 dist = savedInstanceState.getLong("myDist");
+		        if (listeLieux != null && listeEnigmes != null) {
+		        	if(dist<25) {
+		        		txtEnigme.setText("Vous avez trouvé!!!");
+						msgDist.setText("Description: "+listeEnigmes.get(cptLieu).getDescLieu());
+						if(cptLieu==listeLieux.size()-1) {
+							btAbandonner.setVisibility(View.INVISIBLE);
+						}
+						btContinue.setVisibility(View.VISIBLE);	
+		        	} 
+		        	else {
+		        		btContinue.setVisibility(View.INVISIBLE);
+		        		numLieuRech.setText(""+(cptLieu+1));
+						txtEnigme.setText(listeEnigmes.get(cptLieu).getTexte());
+						lieuRechPt=new Point(listeLieux.get(cptLieu).getLatLieu(),listeLieux.get(cptLieu).getLongLieu());
+						msgDist.setText("");
+		        	}
+		        		
+		        }
+		}
+		else {
+			btContinue.setVisibility(View.INVISIBLE);
+			MyAccesDBListeLieux adb=new MyAccesDBListeLieux(RechEnigmeActivity.this);
+	        adb.execute();
+	    }
 		/* récupération des services de localisation disponibles (GPS,signal
 		 * GSM,...)
 		 * permet d'enregistrer les systèmes qui sont à votre disposition
@@ -74,7 +102,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 					double longitude = location.getLongitude();
 					double latitude = location.getLatitude();
 					pt = new Point(latitude, longitude);
-					long dist = pt.dist(lieuRechPt);
+					dist = pt.dist(lieuRechPt);
 					if (dist < 25) {
 						txtEnigme.setText("Vous avez trouvé!!!");
 						msgDist.setText("Description: "+ listeEnigmes.get(cptLieu).getDescLieu());
@@ -156,6 +184,23 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void onSaveInstanceState(Bundle savedState) {
+	    super.onSaveInstanceState(savedState);
+	    ArrayList<LieuDB> listeL = new ArrayList<LieuDB>();
+	    ArrayList<EnigmeDB> listeEnig = new ArrayList<EnigmeDB>();
+	    int cpt= cptLieu;
+	    long distS = dist;
+	    // Note: getValues() is a method in your ArrayAdaptor subclass
+	    listeL = listeLieux;
+	    listeEnig = listeEnigmes;
+	    //values = listeJeux.getValues(); 
+	    savedState.putParcelableArrayList("myListeLieux", listeL);
+	    savedState.putParcelableArrayList("myListeEnigmes", listeEnig);
+	    savedState.putLong("myDist", distS);
+	    savedState.putInt("myCpt",cpt);    
+	}
+	
 	@Override
 	public void onDestroy(){
 		super.onDestroy();

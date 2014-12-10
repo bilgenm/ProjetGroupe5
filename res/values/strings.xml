@@ -14,5 +14,6 @@
     <string name="btgo">Continuer</string>
     <string name="title_activity_inscription">InscriptionActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_connexion">ConnexionActivity</string>
 
 </resources>
