@@ -48,6 +48,9 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		else if(langue.equalsIgnoreCase("français")){
 			lang="fr";
 		}
+		else if(langue.equalsIgnoreCase("Español")){
+			lang="es";
+		}
 		jeuChoisi = (JeuDB) i.getParcelableExtra(RechVilleActivity.IDJEU);
 		numLieuRech = (TextView) findViewById(R.id.numlieu);
 		txtEnigme = (TextView) findViewById(R.id.enigrech);

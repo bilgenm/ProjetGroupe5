@@ -146,7 +146,7 @@ public class InscriptionActivity extends ActionBarActivity {
 					if(con==null){
 						con = new DBConnection().getConnection(); 
 						if(con==null) {
-							resultat="echec de la connexion";
+							resultat=getString (R.string.msgEchec);
 							return false;
 						}
 						JoueurDB.setConnection(con);
@@ -163,7 +163,7 @@ public class InscriptionActivity extends ActionBarActivity {
 						resultat = getString(R.string.inscrip_ok);
 						}
 					catch(Exception e){	
-						resultat="erreur"+e.getMessage(); 
+						resultat=getString (R.string.msgError);//+e.getMessage(); 
 						return false;
 					}
 					return true;

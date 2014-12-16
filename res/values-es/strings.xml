@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Juego de pista</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="lblchoix">Escoja una ciudad</string>
+    <string name="chercher">Jugar</string>
+    <string name="selection">Seleccion</string>
+    <string name="affiche">ici affichage</string>
+    <string name="title_activity_rech_ville">Escojer una cuidad</string>
+    <string name="title_activity_rech_enigme">Parcurrir los enigmas</string>
+    <string name="lblieu">Lugar n°:</string>
+    <string name="btabandonne">Abandonar</string>
+    <string name="btgo">Continuar</string>
+    <string name="title_activity_inscription">Inscripcion</string>
+    <string name="labinscr">Inscripcion</string>
+    <string name="labnom">Apellido</string>
+    <string name="labprenom">Nombre</string>
+    <string name="labpseudo">nombre de usuario</string>
+    <string name="labpassword">Contraseña</string>
+    <string name="labpassconfirm">Confirmar contraseña</string>
+    <string name="btinscription">Inscribirse</string>
+    <string name="btclear">Borrar</string>
+    <string name="msgfound">Bravo ha encontrado el lugar!!!</string>
+    <string name="msgDesc">Descripcion</string>
+    <string name="msgClose">Esta cerca, mire bien a su alrededor!</string>
+    <string name="msgDescistance">Usted se encuentra a </string>
+    <string name="msgBtAbandon">No funciona!</string>
+    <string name="msgFin">Fin de juego de pista para esta ciudad</string>
+    <string name="msgCalcul">Cálculo de la distancia en curso</string>
+    <string name="msgChargement">Descarga de enigma en curso</string>
+    <string name="msgEchec">Problema de conexión</string>
+    <string name="msgError">Error</string>
+    <string name="msgMaj">Modificación de su lugar en curso de busqueda</string>
+    <string name="msgErrorMaj">Error de modificación del lugar buscado</string>
+    <string name="msgMajOk">Su lugar en curso de busqueda ha sido modificado</string>
+    <string name="labconnect">conexión</string>
+    <string name="title_activity_connexion">conexión</string>
+    <string name="errchampvide">todos los datos son obligatorios</string>
+    <string name="errpseudoexist">el nombre de usuario ya existe</string>
+    <string name="errmdp">Las contraseñas no corresponden</string>
+    <string name="inscrip_ok">su inscripcion se ha enregistrado</string>
+    <string name="pgd_msg">Tratamiento de datos en curso</string>
+    <string name="connexion">conexión</string>
+
+</resources>
+
