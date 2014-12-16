@@ -7,6 +7,7 @@
     <string name="chercher">Chercher</string>
     <string name="selection">Selection</string>
     <string name="affiche">ici affichage</string>
+     <string name="msgLoading">Chargement en cours</string>
     <string name="title_activity_rech_ville">Recherchez une ville</string>
     <string name="title_activity_rech_enigme">Parcourir les énigmes</string>
     <string name="lblieu">Lieu n°:</string>

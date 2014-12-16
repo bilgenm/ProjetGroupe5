@@ -2,6 +2,7 @@ package be.condorcet.projetgroupe5;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+
 import be.condorcet.projetgroupe5.modele.*;
 import android.support.v7.app.ActionBarActivity;
 import android.app.ProgressDialog;
@@ -119,7 +120,7 @@ public class RechVilleActivity extends ActionBarActivity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(RechVilleActivity.this);
-			pgd.setMessage("chargement en cours");
+			pgd.setMessage(getString(R.string.msgLoading));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 		}
@@ -133,7 +134,7 @@ public class RechVilleActivity extends ActionBarActivity {
 			if (con == null) {
 				con = new DBConnection().getConnection();
 				if (con == null) {
-					resultat = "echec de la connexion";
+					resultat = getString(R.string.msgEchec);
 					return false;
 				}
 				JeuDB.setConnection(con);
@@ -142,7 +143,7 @@ public class RechVilleActivity extends ActionBarActivity {
 				listeJeux = JeuDB.listeVilles();
 			}
 			catch (Exception e) {
-				resultat = "erreur" + e.getMessage();
+				resultat = getString(R.string.msgError);
 				return false;
 			}
 			return true;
