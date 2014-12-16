@@ -12,5 +12,8 @@
     <string name="lblieu">Place n°:</string>
     <string name="btabandonne">Abandon</string>
     <string name="btgo">Continue</string>
+    <string name="title_activity_inscription">InscriptionActivity</string>
+    <string name="labconnect">Connection</string>
+    <string name="title_activity_connexion">Connection</string>
 
 </resources>
