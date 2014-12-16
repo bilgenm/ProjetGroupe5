@@ -1,13 +1,104 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303D46"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="be.condorcet.projetgroupe5.InscriptionActivity" >
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/lblinscrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/labinscr"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/editNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/labnom"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/editPrenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/labprenom"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/editPseudo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/labpseudo"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/labpassword"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/editPassConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/labpassconfirm"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp" >
+
+            <Button
+                android:id="@+id/buttonInscrip"
+                android:layout_width="@dimen/long_bt_prt"
+                android:layout_height="@dimen/height_bt"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="#8ECE03"
+                android:onClick="gestionSinscrire"
+                android:text="@string/btinscription" />
+
+            <Button
+                android:id="@+id/buttonClear"
+                android:layout_width="@dimen/long_bt_prt"
+                android:layout_height="@dimen/height_bt"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="#8ECE03"
+                android:onClick="gestionClear"
+                android:text="@string/btclear" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
