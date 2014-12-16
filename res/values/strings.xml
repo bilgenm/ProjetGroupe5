@@ -23,5 +23,10 @@
     <string name="btclear">Effacer</string>
     <string name="labconnect">Connexion</string>
     <string name="title_activity_connexion">Connexion</string>
+    <string name="errchampvide">Tous les champs sont obligatoires</string>
+    <string name="errpseudoexist">Ce pseudo existe déjà</string>
+    <string name="errmdp">Ces mots de passe ne correspondent pas</string>
+    <string name="inscrip_ok">Inscription réussie</string>
+    <string name="connexion">Connexion</string>
 
 </resources>

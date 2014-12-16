@@ -250,7 +250,8 @@ public class JoueurDB extends Joueur implements CRUD {
 				return joueur;
 
 			} else {
-				throw new Exception("pseudo inconnu");
+				//throw new Exception("pseudo inconnu");
+				return null;
 			}
 
 		} catch (Exception e) {
