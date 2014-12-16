@@ -4,11 +4,11 @@
     <string name="app_name">Juego de pista</string>
     <string name="action_settings">Ajustes</string>
     <string name="lblchoix">Escoja una ciudad</string>
-    <string name="chercher">Jugar</string>
+    <string name="chercher">Buscar</string>
     <string name="selection">Seleccion</string>
     <string name="affiche">ici affichage</string>
     <string name="title_activity_rech_ville">Escojer una cuidad</string>
-    <string name="title_activity_rech_enigme">Parcurrir los enigmas</string>
+    <string name="title_activity_rech_enigme">Recorrer los enigmas</string>
     <string name="lblieu">Lugar n°:</string>
     <string name="btabandonne">Abandonar</string>
     <string name="btgo">Continuar</string>
