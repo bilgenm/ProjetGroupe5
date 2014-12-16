@@ -32,6 +32,7 @@
     <string name="errpseudoexist">Ce pseudo existe déjà</string>
     <string name="errmdp">Ces mots de passe ne correspondent pas</string>
     <string name="inscrip_ok">Inscription réussie</string>
+    <string name="pgd_msg">Traitement des données en cours</string>
     <string name="connexion">Connexion</string>
 
 </resources>

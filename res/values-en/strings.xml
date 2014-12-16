@@ -27,5 +27,14 @@
     <string name="msgBtAbandon">Does not work!</string>
     <string name="labconnect">Connection</string>
     <string name="title_activity_connexion">Connection</string>
+    <string name="errchampvide">You must fill all the fields</string>
+    <string name="errpseudoexist">This username already exists</string>
+    <string name="errmdp">These passwords do not match</string>
+    <string name="inscrip_ok">Successful registration</string>
+    <string name="pgd_msg">Processing data</string>
+    <string name="connexion">Connection</string>
+
+
+
 
 </resources>

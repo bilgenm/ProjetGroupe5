@@ -136,7 +136,7 @@ public class InscriptionActivity extends ActionBarActivity {
 				protected void onPreExecute(){
 					super.onPreExecute();
 					pgd=new ProgressDialog(InscriptionActivity.this);
-				    pgd.setMessage("Traitement de données en cours");
+				    pgd.setMessage(getString(R.string.pgd_msg));
 				    pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				    pgd.show();
 				}
