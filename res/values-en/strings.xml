@@ -14,6 +14,17 @@
     <string name="btgo">Continue</string>
     <string name="title_activity_inscription">Registration</string>
     <string name="labinscr">Registration</string>
+    <string name="labnom">Last name</string>
+    <string name="labprenom">First name</string>
+    <string name="labpseudo">User name</string>
+    <string name="labpassword">Password</string>
+    <string name="labpassconfirm">Confirm Password</string>
+    <string name="btinscription">Register</string>
+    <string name="btclear">Clear</string>
+    <string name="msgfound">You found!!!</string>
+    <string name="msgClose">You are very close, look around you!</string>
+    <string name="msgDescistance">You are at</string>
+    <string name="msgBtAbandon">Does not work!</string>
     <string name="labconnect">Connection</string>
     <string name="title_activity_connexion">Connection</string>
 

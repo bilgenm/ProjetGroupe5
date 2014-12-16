@@ -2,6 +2,7 @@ package be.condorcet.projetgroupe5;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+
 import be.condorcet.projetgroupe5.modele.*;
 import android.support.v7.app.ActionBarActivity;
 import android.app.ProgressDialog;
@@ -31,6 +32,8 @@ public class RechEnigmeActivity extends ActionBarActivity {
 	private int cptLieu = 0;
 	private int idLieuRech = 0;
 	private int idJ = 1;
+	String langue = "";
+	String lang = "";
 	private LocationManager locationManager;
 	private Point lieuRechPt=new Point(0,0),pt=new Point(0,0);
 
@@ -39,6 +42,13 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rech_enigme);
 		Intent i = getIntent();
+		langue = this.getResources().getConfiguration().locale.getDisplayLanguage();
+		if(langue.equalsIgnoreCase("English")){
+			lang="en";
+		}
+		else if(langue.equalsIgnoreCase("français")){
+			lang="fr";
+		}
 		jeuChoisi = (JeuDB) i.getParcelableExtra(RechVilleActivity.IDJEU);
 		numLieuRech = (TextView) findViewById(R.id.numlieu);
 		txtEnigme = (TextView) findViewById(R.id.enigrech);
@@ -54,8 +64,8 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			 dist = savedInstanceState.getLong("myDist");
 		        if (listeLieux != null && listeEnigmes != null) {
 		        	if(dist<25) {
-		        		txtEnigme.setText("Vous avez trouvé!!!");
-						msgDist.setText("Description: "+listeEnigmes.get(cptLieu).getDescLieu());
+		        		txtEnigme.setText(getString(R.string.msgfound));
+						msgDist.setText(getString(R.string.msgDesc)+": "+listeEnigmes.get(cptLieu).getDescLieu());
 						if(cptLieu==listeLieux.size()-1) {
 							btAbandonner.setVisibility(View.INVISIBLE);
 						}
@@ -104,22 +114,22 @@ public class RechEnigmeActivity extends ActionBarActivity {
 					pt = new Point(latitude, longitude);
 					dist = pt.dist(lieuRechPt);
 					if (dist < 25) {
-						txtEnigme.setText("Vous avez trouvé!!!");
-						msgDist.setText("Description: "+ listeEnigmes.get(cptLieu).getDescLieu());
+						txtEnigme.setText(getString(R.string.msgfound));
+						msgDist.setText(getString(R.string.msgDesc)+": "+ listeEnigmes.get(cptLieu).getDescLieu());
 						if (cptLieu == listeLieux.size()-1) {
 							btAbandonner.setVisibility(View.INVISIBLE);
 						}
 						btContinue.setVisibility(View.VISIBLE);
 					} 
 					else if (dist < 30) {
-						msgDist.setText("Vous êtes tout près regarder bien au tour de vous! Vous êtes à "+ dist + " m");
+						msgDist.setText(getString(R.string.msgClose)+" "+R.string.msgDescistance+" "+ dist + " m");
 
 					} 
 					else if (dist < 1000) {
-						msgDist.setText("Vous êtes à " + dist + " m");
+						msgDist.setText(getString(R.string.msgDescistance)+" "+ dist + " m");
 					} 
 					else {
-						msgDist.setText("Vous êtes à " + (dist / 1000)+ " km");
+						msgDist.setText(getString(R.string.msgDescistance)+" "+ (dist / 1000)+ " km");
 
 					}
 				}

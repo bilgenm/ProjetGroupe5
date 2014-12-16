@@ -21,6 +21,11 @@
     <string name="labpassconfirm">Confirmer mot de passe</string>
     <string name="btinscription">S\'inscrire</string>
     <string name="btclear">Effacer</string>
+    <string name="msgfound">Vous avez trouvé!!!</string>
+    <string name="msgDesc">Description</string>
+    <string name="msgClose">Vous êtes tout près regarder bien autour de vous!</string>
+    <string name="msgDescistance">Vous êtes à</string>
+    <string name="msgBtAbandon">Ne fonctionne pas!</string>
     <string name="labconnect">Connexion</string>
     <string name="title_activity_connexion">Connexion</string>
     <string name="errchampvide">Tous les champs sont obligatoires</string>
