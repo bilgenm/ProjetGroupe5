@@ -26,6 +26,14 @@
     <string name="msgClose">Vous êtes tout près regarder bien autour de vous!</string>
     <string name="msgDescistance">Vous êtes à</string>
     <string name="msgBtAbandon">Ne fonctionne pas!</string>
+    <string name="msgFin">Fin de jeu de piste pour cette ville</string>
+    <string name="msgCalcul">Calcul de distance en cours</string>
+    <string name="msgChargement">Chargement d\'enigmes en cours</string>
+    <string name="msgEchec">Echec de la connexion</string>
+    <string name="msgError">Erreur</string>
+    <string name="msgMaj">Mise à jour de votre lieu recherché</string>
+    <string name="msgErrorMaj">Erreur de mis à jour de lieu recherché</string>
+    <string name="msgMajOk">Votre lieu a été mis à jour</string>
     <string name="labconnect">Connexion</string>
     <string name="title_activity_connexion">Connexion</string>
     <string name="errchampvide">Tous les champs sont obligatoires</string>

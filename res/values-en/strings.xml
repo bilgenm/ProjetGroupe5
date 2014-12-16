@@ -25,6 +25,14 @@
     <string name="msgClose">You are very close, look around you!</string>
     <string name="msgDescistance">You are at</string>
     <string name="msgBtAbandon">Does not work!</string>
+    <string name="msgFin">End of the game track for this city</string>
+    <string name="msgCalcul">Calculation of current distance</string>
+    <string name="msgChargement">Loading of riddles</string>
+    <string name="msgEchec">Connection failed</string>
+    <string name="msgError">Error</string>
+    <string name="msgMaj">Update your search place</string>
+    <string name="msgErrorMaj">Error during the update of the search place</string>
+    <string name="msgMajOk"> Your place has been updated</string>
     <string name="labconnect">Connection</string>
     <string name="title_activity_connexion">Connection</string>
     <string name="errchampvide">You must fill all the fields</string>

@@ -2,7 +2,6 @@ package be.condorcet.projetgroupe5;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import be.condorcet.projetgroupe5.modele.*;
 import android.support.v7.app.ActionBarActivity;
 import android.app.ProgressDialog;
@@ -56,7 +55,6 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		lblLieu = (TextView) findViewById(R.id.lablieu);
 		btAbandonner = (Button) findViewById(R.id.abandonne);
 		btContinue = (Button) findViewById(R.id.go);
-		btContinue.setVisibility(View.INVISIBLE);
 		if (savedInstanceState != null) {
 			 listeLieux = savedInstanceState.getParcelableArrayList("myListeLieux");
 			 listeEnigmes = savedInstanceState.getParcelableArrayList("myListeEnigmes");
@@ -64,6 +62,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			 dist = savedInstanceState.getLong("myDist");
 		        if (listeLieux != null && listeEnigmes != null) {
 		        	if(dist<25) {
+		        		numLieuRech.setText(""+(cptLieu+1));
 		        		txtEnigme.setText(getString(R.string.msgfound));
 						msgDist.setText(getString(R.string.msgDesc)+": "+listeEnigmes.get(cptLieu).getDescLieu());
 						if(cptLieu==listeLieux.size()-1) {
@@ -122,7 +121,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 						btContinue.setVisibility(View.VISIBLE);
 					} 
 					else if (dist < 30) {
-						msgDist.setText(getString(R.string.msgClose)+" "+R.string.msgDescistance+" "+ dist + " m");
+						msgDist.setText(getString(R.string.msgClose)+" "+getString(R.string.msgDescistance)+" "+ dist + " m");
 
 					} 
 					else if (dist < 1000) {
@@ -149,7 +148,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		});
 	}
 	public void gestionAbandon(View view){
-		Toast.makeText(RechEnigmeActivity.this,"Ne fonctionne pas!", Toast.LENGTH_SHORT).show();	
+		Toast.makeText(RechEnigmeActivity.this,R.string.msgBtAbandon, Toast.LENGTH_SHORT).show();	
 	}
 	public void gestionContinue(View view){
 		cptLieu++;
@@ -158,7 +157,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			//btAbandonner.setVisibility(View.INVISIBLE);
 			lblLieu.setText("");
 			numLieuRech.setText("");
-			txtEnigme.setText("Fin de jeu de piste pour cette ville");
+			txtEnigme.setText(getString(R.string.msgFin));
 			msgDist.setText("");
 			idLieuRech = 0;
 			MyAccesDBLieuRech adb2 = new MyAccesDBLieuRech(RechEnigmeActivity.this); 
@@ -172,7 +171,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			numLieuRech.setText(""+(cptLieu+1));
 			txtEnigme.setText(listeEnigmes.get(cptLieu).getTexte());
 			lieuRechPt=new Point(listeLieux.get(cptLieu).getLatLieu(),listeLieux.get(cptLieu).getLongLieu());
-			msgDist.setText("Calcul de distance en cours");	
+			msgDist.setText(getString(R.string.msgCalcul));	
 		}
 	}
 
@@ -240,7 +239,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		protected void onPreExecute(){
 			super.onPreExecute();
 			pgd=new ProgressDialog(RechEnigmeActivity.this);
-		    pgd.setMessage("Chargement d'enigmes en cours");
+		    pgd.setMessage(getString(R.string.msgChargement));
 		    pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		    pgd.show();
 		}
@@ -249,7 +248,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			if(con==null){
 				con = new DBConnection().getConnection(); 
 				if(con==null) {
-					resultat="echec de la connexion";
+					resultat=getString(R.string.msgEchec);
 					return false;
 				}
 				LieuDB.setConnection(con);
@@ -259,12 +258,12 @@ public class RechEnigmeActivity extends ActionBarActivity {
 				listeLieux = LieuDB.rechLieu(jeuChoisi.getDebut());
 				for(LieuDB l1 : listeLieux)
 				{
-					EnigmeDB enig = EnigmeDB.rechEnigmeLieu(l1.getIdLieu(),"fr");
+					EnigmeDB enig = EnigmeDB.rechEnigmeLieu(l1.getIdLieu(),lang);
 					listeEnigmes.add(enig);
 				}
 			}
 			catch(Exception e){	
-				resultat="erreur" +e.getMessage(); 
+				resultat=getString(R.string.msgError); 
 				return false;
 			}
 			return true;
@@ -279,7 +278,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 				numLieuRech.setText(""+(cptLieu+1));
 				txtEnigme.setText(listeEnigmes.get(cptLieu).getTexte());
 				lieuRechPt=new Point(listeLieux.get(cptLieu).getLatLieu(),listeLieux.get(cptLieu).getLongLieu());
-				msgDist.setText("Calcul de distance en cours");
+				msgDist.setText(getString(R.string.msgCalcul));
 			}
 			else {
 				txtEnigme.setText(resultat);
@@ -301,7 +300,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pgd = new ProgressDialog(RechEnigmeActivity.this);
-			pgd.setMessage("Mise à jour de votre lieu recherché");
+			pgd.setMessage(getString(R.string.msgMaj));
 			pgd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pgd.show();
 
@@ -311,7 +310,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			if (con == null) {
 				con = new DBConnection().getConnection();
 				if (con == null) {
-					resultat = "echec de la connexion";
+					resultat = getString(R.string.msgEchec);
 					return false;
 				}
 				JoueurDB.setConnection(con);
@@ -326,7 +325,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 				j.updateLieuRech();
 			}
 			catch (Exception e) {
-				resultat = "Erreur de mis à jour de lieu recherché "+ e.getMessage();
+				resultat = getString(R.string.msgErrorMaj);
 				return false;
 			}
 			return true;
@@ -336,7 +335,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 			super.onPostExecute(result);
 			pgd.dismiss();
 			if (result) {
-				Toast.makeText(RechEnigmeActivity.this,"Votre lieu a été mis à jour", Toast.LENGTH_SHORT).show();
+				Toast.makeText(RechEnigmeActivity.this,R.string.msgMajOk, Toast.LENGTH_SHORT).show();
 
 			} 
 			else {
