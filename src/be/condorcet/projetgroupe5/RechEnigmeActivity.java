@@ -32,7 +32,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 	private int idLieuRech = 0;
 	private int idJ = 1;
 	String langue = "";
-	String lang = "";
+	String lang = "fr";
 	private LocationManager locationManager;
 	private Point lieuRechPt=new Point(0,0),pt=new Point(0,0);
 

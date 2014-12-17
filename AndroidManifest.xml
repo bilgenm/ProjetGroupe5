@@ -24,7 +24,11 @@
         <activity
             android:name=".RechVilleActivity"
             android:label="@string/title_activity_rech_ville" >
-             
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".RechEnigmeActivity"
@@ -33,11 +37,7 @@
         <activity
             android:name=".InscriptionActivity"
             android:label="@string/title_activity_inscription" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".ConnexionActivity"
