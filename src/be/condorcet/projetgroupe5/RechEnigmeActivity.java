@@ -32,7 +32,7 @@ public class RechEnigmeActivity extends ActionBarActivity {
 	private int idLieuRech = 0;
 	private int idJ = 1;
 	String langue = "";
-	String lang = "fr";
+	String lang = "";
 	private LocationManager locationManager;
 	private Point lieuRechPt=new Point(0,0),pt=new Point(0,0);
 
@@ -50,6 +50,9 @@ public class RechEnigmeActivity extends ActionBarActivity {
 		}
 		else if(langue.equalsIgnoreCase("Español")){
 			lang="es";
+		}
+		else{
+			lang="fr";
 		}
 		jeuChoisi = (JeuDB) i.getParcelableExtra(RechVilleActivity.IDJEU);
 		numLieuRech = (TextView) findViewById(R.id.numlieu);
